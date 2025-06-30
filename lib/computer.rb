@@ -2,14 +2,16 @@ require_relative "player"
 require_relative "board"
 
 class Computer < Player
-  def randomize_colors(colors)
-    col1 = colors[0].sample
-    col2 = colors[1].sample
-    col3 = colors[2].sample
-    col4 = colors[3].sample
+  def randomize_colors(board, i, is_end, human)
+    col1 = ["blue", "green", "red", "aqua", "yellow", "purple"].sample
+    col2 = ["blue", "green", "red", "aqua", "yellow", "purple"].sample
+    col3 = ["blue", "green", "red", "aqua", "yellow", "purple"].sample
+    col4 = ["blue", "green", "red", "aqua", "yellow", "purple"].sample
 
-    random_cols = [col1, col2, col3, col4]
+    return rand_cols = [col1, col2, col3, col4]
+  end
 
-    guess_cols(random_cols)
+  def check_answers()
+    
   end
 end
