@@ -12,15 +12,16 @@ class Board
 		col3 == nil ? col3 = "gray" : guesses[2]
 		col4 == nil ? col4 = "gray" : guesses[3]
     
-		Text.new(
-			'1 =             2 =               3 =           4 =             5 =               6 = ',
-			x: 20, y: 5,
-			font: 'lib/Roboto-VariableFont_wdth,wght.ttf',
-			style: 'bold',
-			size: 18,
-			color: 'white',
-			z: 10
-		)
+			Text.new(
+				'1 =             2 =               3 =           4 =             5 =               6 = ',
+				x: 20, y: 5,
+				font: 'lib/Roboto-VariableFont_wdth,wght.ttf',
+				style: 'bold',
+				size: 18,
+				color: 'white',
+				z: 10
+			)
+
 			Text.new(
 				'Blue',
 				x: 50, y: 5,
@@ -80,48 +81,56 @@ class Board
 				color: 'purple',
 				z: 10
 			)
+
 			Square.new(
 						x: 100, y: 30 + incr,
 						size: 50,
 						color: col1,
 						z: 10
 						)
+
 			Square.new(
 						x: 160, y: 30 + incr,
 						size: 50,
 						color: col2,
 						z: 10
 						)
+
 			Square.new(
 						x: 220, y: 30 + incr,
 						size: 50,
 						color: col3,
 						z: 10
 						)
+
 			Square.new(
 						x: 280, y: 30 + incr,
 						size: 50,
 						color: col4,
 						z: 10
 						)
+
 			Square.new(
 						x: 340, y: 35 + incr,
 						size: 15,
 						color: 'red',
 						z: 10
 						)
+
 			Square.new(
 						x: 340, y: 60 + incr,
 						size: 15,
 						color: 'red',
 						z: 10
 						)
+
 			Square.new(
 						x: 365, y: 35 + incr,
 						size: 15,
 						color: 'red',
 						z: 10
 						)
+						
 			Square.new(
 						x: 365, y: 60 + incr,
 						size: 15,
