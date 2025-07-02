@@ -8,6 +8,7 @@ class Computer < Player
     col3 = ["blue", "green", "red", "aqua", "yellow", "purple"].sample
     col4 = ["blue", "green", "red", "aqua", "yellow", "purple"].sample
 
-    return rand_cols = [col1, col2, col3, col4]
+     p rand_cols = [col1, col2, col3, col4]
+    return rand_cols
   end
 end
