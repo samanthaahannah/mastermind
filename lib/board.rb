@@ -12,8 +12,8 @@ class Board
 		col2 == nil ? col2 = "gray" : guesses[1]
 		col3 == nil ? col3 = "gray" : guesses[2]
 		col4 == nil ? col4 = "gray" : guesses[3]
-    
-		font = 'fonts/Roboto-VariableFont_wdth,wght.ttf'
+
+    font = 'fonts/Roboto-VariableFont_wdth,wght.ttf'
 
 		Text.new(
 				'1 =             2 =               3 =           4 =             5 =               6 = ',
@@ -156,6 +156,8 @@ class Board
 	end
 
 	def make_board(board_array, guesses, incr, marks)
+		font = 'fonts/Roboto-VariableFont_wdth,wght.ttf'
+
 		case
 		when incr < 720 && $is_end == false
 			board_array.push(make_boardline(guesses, incr))
@@ -163,7 +165,7 @@ class Board
 			Text.new(
 				'You won, yay :D!',
 				x: 100, y: 750,
-				font: 'lib/Roboto-VariableFont_wdth,wght.ttf',
+				font: font,
 				style: 'bold',
 				size: 18,
 				color: 'aqua',
@@ -175,7 +177,7 @@ class Board
 			Text.new(
 				"You lost, sorry :(",
 				x: 100, y: 750,
-				font: 'lib/Roboto-VariableFont_wdth,wght.ttf',
+				font: font,
 				style: 'bold',
 				size: 18,
 				color: 'aqua',

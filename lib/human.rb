@@ -1,9 +1,15 @@
 require_relative "player"
 
 class Human < Player
+  
+  def initialise(role)
+      super(role)
+  end
+
   def process_guesses(board, board_array,guesses = [], rand_cols = [], marks = [], incr = 0)
     marks = []
     $is_end = false
+
     if guesses == rand_cols
       p "You win!"
       marks = ["green", "green", "green", "green"]
@@ -32,6 +38,9 @@ class Human < Player
       array_count.times {marks.push("yellow")}
       board.get_marks(marks, incr)
     end
+  end
 
+  def pick_colours()
+    
   end
 end
