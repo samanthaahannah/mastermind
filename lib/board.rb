@@ -1,17 +1,17 @@
 require 'ruby2d'
 
 class Board
-  def make_boardline(guesses = [], incr = 0)		
+  def make_boardline(guesses = [], incr)		
 
 		col1 = guesses[0]
     col2 = guesses[1]
     col3 = guesses[2]
     col4 = guesses[3]
 
-		col1 == nil ? col1 = "gray" : guesses[0]
-		col2 == nil ? col2 = "gray" : guesses[1]
-		col3 == nil ? col3 = "gray" : guesses[2]
-		col4 == nil ? col4 = "gray" : guesses[3]
+		col1 == nil ? col1 = "black" : guesses[0]
+		col2 == nil ? col2 = "black" : guesses[1]
+		col3 == nil ? col3 = "black" : guesses[2]
+		col4 == nil ? col4 = "black" : guesses[3]
 
     font = 'fonts/Roboto-VariableFont_wdth,wght.ttf'
 
@@ -115,33 +115,34 @@ class Board
   end
 
 	def base_board
+		if $player_chosen == true
 		(0..600).step(60) do |i|
 			p i += 60
 			Square.new(
 						x: 100, y: 30 + i,
 						size: 50,
-						color: 'gray',
+						color: 'black',
 						z: 10
 						)
 
 			Square.new(
 						x: 160, y: 30 + i,
 						size: 50,
-						color: 'gray',
+						color: 'black',
 						z: 10
 						)
 
 			Square.new(
 						x: 220, y: 30 + i,
 						size: 50,
-						color: 'gray',
+						color: 'black',
 						z: 10
 						)
 
 			Square.new(
 						x: 280, y: 30 + i,
 						size: 50,
-						color: 'gray',
+						color: 'black',
 						z: 10
 						)
 
@@ -172,6 +173,7 @@ class Board
 						color: 'black',
 						z: 10
 						)
+			end
 		end
 	end
 	
@@ -182,10 +184,10 @@ class Board
     mark3 = marks[2]
     mark4 = marks[3]
 
-		mark1 == nil ? mark1 = "gray" : marks[0]
-		mark2 == nil ? mark2 = "gray" : marks[1]
-		mark3 == nil ? mark3 = "gray" : marks[2]
-		mark4 == nil ? mark4 = "gray" : marks[3]
+		mark1 == nil ? mark1 = "black" : marks[0]
+		mark2 == nil ? mark2 = "black" : marks[1]
+		mark3 == nil ? mark3 = "black" : marks[2]
+		mark4 == nil ? mark4 = "black" : marks[3]
 
 			Square.new(
 						x: 340, y: 35 + incr,
@@ -217,8 +219,8 @@ class Board
 	end
 
 	def make_board(board_array, guesses, incr, marks)
+		
 		font = 'fonts/Roboto-VariableFont_wdth,wght.ttf'
-		12.times {board_array.push(make_boardline(guesses,incr))  }
 		case
 		when incr < 720 && $is_end == false
 			board_array.push(make_boardline(guesses, incr))

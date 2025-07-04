@@ -8,74 +8,121 @@ require_relative "lib/board"
 
 set height: 800
 
-guesses = []
-marks = []
-board_array = []
-incr = 0
-$is_end = false
+def make_decision()
+		font = 'fonts/Roboto-VariableFont_wdth,wght.ttf'
 
-$response = "y"
+			@decision_text = Text.new(
+				'Do you want to guess, or let the computer guess?',
+				x: 100, y: 20,
+				font: font,
+				style: 'bold',
+				size: 18,
+				color: 'aqua',
+				z: 10
+			)
+
+      @decision = Text.new(
+				'A = You, B = Computer',
+				x: 100, y: 40,
+				font: font,
+				style: 'bold',
+				size: 18,
+				color: 'aqua',
+				z: 10
+			)
+      
+end
+
+make_decision()
+$player_chosen = false
 
 board = Board.new
-human = Human.new("guesser")
-computer = Computer.new("randomizer")
+human = Human.new("")
+computer = Computer.new("")
 
-keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "y", "escape", "return", "backspace"]
-board.base_board()
-board.make_board(board_array, guesses, incr, marks)
-rand_cols = computer.randomize_colors(human)
+def testing(board, human, computer)
+  guesses = []
+  marks = []
+  board_array = []
+  incr = 0
+  $is_end = false
 
-on :key_down do |event|
-      case
-      when event.key == '1' && guesses.length < 4 && $is_end == false && human.role == "guesser"
-        color = "blue"
-        guesses.push(color)
-        board.make_board(board_array, guesses, incr, marks)
-      when event.key == '2' && guesses.length < 4 && $is_end == false && human.role == "guesser"
-        color = "green"
-        guesses.push(color)
-        board.make_board(board_array, guesses, incr, marks)
-      when event.key == '3' && guesses.length < 4 && $is_end == false && human.role == "guesser"
-        color = "red"
-        guesses.push(color)
-        board.make_board(board_array, guesses, incr, marks)
-      when event.key == '4' && guesses.length < 4 && $is_end == false && human.role == "guesser"
-        color = "aqua"
-        guesses.push(color)
-        board.make_board(board_array, guesses, incr, marks)
-      when event.key == '5' && guesses.length < 4 && $is_end == false && human.role == "guesser"
-        color = "yellow"
-        guesses.push(color)
-        board.make_board(board_array, guesses, incr, marks)
-      when event.key == '6' && guesses.length < 4 && $is_end == false && human.role == "guesser"
-        color = "purple"
-        guesses.push(color)
-        board.make_board(board_array, guesses, incr, marks)
-      when event.key == 'backspace' && guesses.length <= 4 && $is_end == false && human.role == "guesser"
-        guesses.pop()
-        board.make_board(board_array, guesses, incr, marks)
-      when event.key == 'escape' && guesses.length <= 4
-        exit
-      when event.key == 'y' && guesses.length <= 4
-        board = Board.new
-        human = Human.new("guesser")
-        computer = Computer.new("randomizer")
-        guesses = []
-        marks = []
-        board_array = []
-        incr = 0
-        $is_end = false
-        board.base_board()
-        board.make_board(board_array, guesses, incr, marks)
-        rand_cols = computer.randomize_colors(human)
-      when keys.none? {|key| event.key.include?(key)} && guesses.length <= 4 && $is_end == false && human.role == "guesser"
-        puts "Invalid input"
-      when event.key == 'return' && guesses.length >= 4 && $is_end == false
-        human.process_guesses(board, board_array, guesses, rand_cols, marks, incr)
-        guesses = []
-        incr += 60
-        board.make_board(board_array, guesses, incr, marks)
+  $response = "y"
+
+  keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "y", "n" "escape", "return", "backspace"]
+  $player_chosen == true ? board.base_board() :
+  board.make_board(board_array, guesses, incr, marks)
+  rand_cols = computer.randomize_colors(human)
+
+
+  on :key_down do |event|
+        case
+        when event.key == '1' && guesses.length < 4 && $is_end == false && human.role == "guesser"
+          color = "blue"
+          guesses.push(color)
+          board.make_board(board_array, guesses, incr, marks)
+        when event.key == '2' && guesses.length < 4 && $is_end == false && human.role == "guesser"
+          color = "green"
+          guesses.push(color)
+          board.make_board(board_array, guesses, incr, marks)
+        when event.key == '3' && guesses.length < 4 && $is_end == false && human.role == "guesser"
+          color = "red"
+          guesses.push(color)
+          board.make_board(board_array, guesses, incr, marks)
+        when event.key == '4' && guesses.length < 4 && $is_end == false && human.role == "guesser"
+          color = "aqua"
+          guesses.push(color)
+          board.make_board(board_array, guesses, incr, marks)
+        when event.key == '5' && guesses.length < 4 && $is_end == false && human.role == "guesser"
+          color = "yellow"
+          guesses.push(color)
+          board.make_board(board_array, guesses, incr, marks)
+        when event.key == '6' && guesses.length < 4 && $is_end == false && human.role == "guesser"
+          color = "purple"
+          guesses.push(color)
+          board.make_board(board_array, guesses, incr, marks)
+        when event.key == 'backspace' && guesses.length <= 4 && $is_end == false && human.role == "guesser"
+          guesses.pop()
+          board.make_board(board_array, guesses, incr, marks)
+        when event.key == 'escape'
+          exit
+        when event.key == 'y'
+          guesses = []
+          marks = []
+          board_array = []
+          incr = 0
+          $is_end = false
+          board.get_marks(marks, incr)
+          board.base_board()
+          board.make_board(board_array, guesses, incr, marks)
+          rand_cols = computer.randomize_colors(human)
+        when event.key == 'n'
+          exit
+        when event.key == 'a' && $player_chosen == false
+          human.role = 'guesser'
+          computer.role = 'randomizer'
+          $player_chosen = true
+          p "The computer will pick the colours!"
+          @decision_text.remove
+          @decision.remove
+        when event.key == 'b' && $player_chosen == false
+          human.role = 'randomizer'
+          computer.role = 'guesser'
+          $player_chosen = true
+          p "You will pick the colours!"
+          @decision_text.remove
+          @decision.remove
+        when keys.none? {|key| event.key.include?(key)} && guesses.length <= 4 && $is_end == false && human.role == "guesser"
+          puts "Invalid input"
+        when event.key == 'return' && guesses.length >= 4 && $is_end == false
+          human.process_guesses(board, board_array, guesses, rand_cols, marks, incr)
+          guesses = []
+          incr += 60
+          board.make_board(board_array, guesses, incr, marks)
+        end
       end
-    end
+end
+
+testing(board, human, computer)
 
 show
