@@ -113,6 +113,67 @@ class Board
 						z: 10
 						)
   end
+
+	def base_board
+		(0..600).step(60) do |i|
+			p i += 60
+			Square.new(
+						x: 100, y: 30 + i,
+						size: 50,
+						color: 'gray',
+						z: 10
+						)
+
+			Square.new(
+						x: 160, y: 30 + i,
+						size: 50,
+						color: 'gray',
+						z: 10
+						)
+
+			Square.new(
+						x: 220, y: 30 + i,
+						size: 50,
+						color: 'gray',
+						z: 10
+						)
+
+			Square.new(
+						x: 280, y: 30 + i,
+						size: 50,
+						color: 'gray',
+						z: 10
+						)
+
+			Square.new(
+						x: 340, y: 35 + i,
+						size: 15,
+						color: 'black',
+						z: 10
+						)
+
+			Square.new(
+						x: 340, y: 60 + i,
+						size: 15,
+						color: 'black',
+						z: 10
+						)
+
+			Square.new(
+						x: 365, y: 35 + i,
+						size: 15,
+						color: 'black',
+						z: 10
+						)
+
+			Square.new(
+						x: 365, y: 60 + i,
+						size: 15,
+						color: 'black',
+						z: 10
+						)
+		end
+	end
 	
 	def get_marks(marks, incr)
 
@@ -157,7 +218,7 @@ class Board
 
 	def make_board(board_array, guesses, incr, marks)
 		font = 'fonts/Roboto-VariableFont_wdth,wght.ttf'
-
+		12.times {board_array.push(make_boardline(guesses,incr))  }
 		case
 		when incr < 720 && $is_end == false
 			board_array.push(make_boardline(guesses, incr))

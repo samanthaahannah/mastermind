@@ -21,6 +21,7 @@ human = Human.new("guesser")
 computer = Computer.new("randomizer")
 
 keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "y", "escape", "return", "backspace"]
+board.base_board()
 board.make_board(board_array, guesses, incr, marks)
 rand_cols = computer.randomize_colors(human)
 
@@ -55,6 +56,18 @@ on :key_down do |event|
         board.make_board(board_array, guesses, incr, marks)
       when event.key == 'escape' && guesses.length <= 4
         exit
+      when event.key == 'y' && guesses.length <= 4
+        board = Board.new
+        human = Human.new("guesser")
+        computer = Computer.new("randomizer")
+        guesses = []
+        marks = []
+        board_array = []
+        incr = 0
+        $is_end = false
+        board.base_board()
+        board.make_board(board_array, guesses, incr, marks)
+        rand_cols = computer.randomize_colors(human)
       when keys.none? {|key| event.key.include?(key)} && guesses.length <= 4 && $is_end == false && human.role == "guesser"
         puts "Invalid input"
       when event.key == 'return' && guesses.length >= 4 && $is_end == false
