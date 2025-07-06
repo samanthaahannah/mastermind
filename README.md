@@ -2,13 +2,12 @@
 
 A mastermind game created in Ruby for the Odin Project
 
-##Installation
+## Installation
 
-###Ruby
+### Ruby
 First make sure Ruby is installed on your system
 
-
-###Linux Packages
+### Linux Packages
 
 Makes sure you download packages for Linux
 
