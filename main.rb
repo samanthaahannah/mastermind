@@ -6,7 +6,7 @@ require_relative "lib/human"
 require_relative "lib/player"
 require_relative "lib/board"
 
-set height: 800
+set height: 850
 
 def make_decision()
 		font = 'fonts/Roboto-VariableFont_wdth,wght.ttf'
@@ -50,10 +50,7 @@ def testing(board, human, computer)
   $response = "y"
 
   keys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "y", "n" "escape", "return", "backspace"]
-  $player_chosen == true ? board.base_board() :
-  board.make_board(board_array, guesses, incr, marks)
   rand_cols = computer.randomize_colors(human)
-
 
   on :key_down do |event|
         case
@@ -93,15 +90,17 @@ def testing(board, human, computer)
           incr = 0
           $is_end = false
           board.get_marks(marks, incr)
-          board.base_board()
           board.make_board(board_array, guesses, incr, marks)
           rand_cols = computer.randomize_colors(human)
         when event.key == 'n'
           exit
         when event.key == 'a' && $player_chosen == false
+          $player_chosen = true
+          board.get_marks(marks, incr)
+          board.base_board()
+          board.make_board(board_array, guesses, incr, marks)
           human.role = 'guesser'
           computer.role = 'randomizer'
-          $player_chosen = true
           p "The computer will pick the colours!"
           @decision_text.remove
           @decision.remove

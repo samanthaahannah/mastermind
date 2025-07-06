@@ -7,32 +7,21 @@ A mastermind game created in Ruby for the Odin Project
 ### Ruby
 First make sure Ruby is installed on your system
 
-macOS comes with Ruby, but not the development libraries. So first install Homebrew by pasting this into the terminal `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`. Then install ruby by typing `brew install ruby`. 
+Below are links to the Ruby2D documentation for Ruby installation instruction for macOS, windows and Linux.
 
-Then make sure to add ruby to `$PATH` variable, e.g by running `echo 'export PATH="/usr/local/opt/ruby/bin:$PATH"' >> ~/.bash_profile`.
+[Ruby for macOS](https://www.ruby2d.com/learn/macos/)
 
-To get access to Ruby in current shell, run `source ~/.bash_profile`
+[Ruby for Wundows](https://www.ruby2d.com/learn/windows/)
 
-[Ruby2D macOS](https://www.ruby2d.com/learn/macos/)
+[Ruby for Linux](https://www.ruby2d.com/learn/linux/)
 
-[Homebrew](https://brew.sh/)
+For those using Linux, make sure you also install the extra packages quoted on the Linux page above by copying and pasting the command for your OS into the terminal.
 
-### Linux Packages
+### Ruby2D
 
-Makes sure you download packages for Linux
+After you've installed Ruby, and the extra packages if you're using Linux, make sure you're in the root directory and install the gems with `bundle install`. This should install the Ruby2D and Colorize gems.
 
-Ubuntu, Debian, and Mint
+### Run
 
-`sudo apt install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev`
+Now, if you're in the root directory; you should be able to play the game by typing `ruby main.rb`
 
-CentOS and Fedora
-
-`sudo yum install SDL2-devel SDL2_image-devel SDL2_mixer-devel SDL2_ttf-devel`
-
-openSUSE
-
-`sudo zypper install libSDL2-devel libSDL2_image-devel libSDL2_mixer-devel libSDL2_ttf-devel`
-
-Arch
-
-`sudo pacman -S sdl2 sdl2_image sdl2_mixer sdl2_ttf`
