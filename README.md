@@ -7,6 +7,16 @@ A mastermind game created in Ruby for the Odin Project
 ### Ruby
 First make sure Ruby is installed on your system
 
+macOS comes with Ruby, but not the development libraries. So first install Homebrew by pasting this into the terminal `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`. Then install ruby by typing `brew install ruby`. 
+
+Then make sure to add ruby to `$PATH` variable, e.g by running `echo 'export PATH="/usr/local/opt/ruby/bin:$PATH"' >> ~/.bash_profile`.
+
+To get access to Ruby in current shell, run `source ~/.bash_profile`
+
+[Ruby2D macOS](https://www.ruby2d.com/learn/macos/)
+
+[Homebrew](https://brew.sh/)
+
 ### Linux Packages
 
 Makes sure you download packages for Linux
