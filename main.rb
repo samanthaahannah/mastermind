@@ -33,14 +33,13 @@ def make_decision()
       
 end
 
-make_decision()
-$player_chosen = false
+def testing()
+  make_decision()
+  $player_chosen = false
+  board = Board.new
+  human = Human.new("")
+  computer = Computer.new("")
 
-board = Board.new
-human = Human.new("")
-computer = Computer.new("")
-
-def testing(board, human, computer)
   guesses = []
   marks = []
   board_array = []
@@ -83,16 +82,16 @@ def testing(board, human, computer)
           board.make_board(board_array, guesses, incr, marks)
         when event.key == 'escape'
           exit
-        when event.key == 'y'
+        when event.key == 'y' && $is_end == true
           guesses = []
           marks = []
           board_array = []
           incr = 0
           $is_end = false
-          board.get_marks(marks, incr)
-          board.make_board(board_array, guesses, incr, marks)
+          board.base_board()
           rand_cols = computer.randomize_colors(human)
-        when event.key == 'n'
+          $player_chosen = false
+        when event.key == 'n' && $is_end == true
           exit
         when event.key == 'a' && $player_chosen == false
           $player_chosen = true
@@ -117,11 +116,11 @@ def testing(board, human, computer)
           human.process_guesses(board, board_array, guesses, rand_cols, marks, incr)
           guesses = []
           incr += 60
-          board.make_board(board_array, guesses, incr, marks)
+          board.make_board(board_array, guesses, incr, marks, rand_cols)
         end
       end
 end
 
-testing(board, human, computer)
+testing()
 
 show

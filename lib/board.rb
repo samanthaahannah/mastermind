@@ -114,6 +114,36 @@ class Board
 			)
   end
 
+	def get_chosen_colors(rand_cols)
+		Square.new(
+			x: 100, y: 760,
+			size: 50,
+			color: rand_cols[0],
+			z: 10
+			)
+
+		Square.new(
+			x: 160, y: 760,
+			size: 50,
+			color: rand_cols[1],
+			z: 10
+			)
+
+		Square.new(
+			x: 220, y: 760,
+			size: 50,
+			color: rand_cols[2],
+			z: 10
+			)
+
+		Square.new(
+			x: 280, y: 760,
+			size: 50,
+			color: rand_cols[3],
+			z: 10
+			)
+	end
+
 	def choose_colors(chosen_colors = [])
 		col1 = chosen_colors[0]
     col2 = chosen_colors[1]
@@ -194,13 +224,6 @@ class Board
 				)
 
 			Square.new(
-				x: 340, y: 60 + i,
-				size: 15,
-				color: 'black',
-				z: 10
-				)
-
-			Square.new(
 				x: 365, y: 35 + i,
 				size: 15,
 				color: 'black',
@@ -208,7 +231,14 @@ class Board
 				)
 
 			Square.new(
-				x: 365, y: 60 + i,
+				x: 390, y: 35 + i,
+				size: 15,
+				color: 'black',
+				z: 10
+				)
+
+			Square.new(
+				x: 415, y: 35 + i,
 				size: 15,
 				color: 'black',
 				z: 10
@@ -272,28 +302,28 @@ class Board
 				)
 
 			Square.new(
-				x: 340, y: 60 + incr,
+				x: 365, y: 35 + incr,
 				size: 15,
 				color: mark2,
 				z: 10
 				)
 
 			Square.new(
-				x: 365, y: 35 + incr,
+				x: 390, y: 35 + incr,
 				size: 15,
 				color: mark3,
 				z: 10
 				)
 
 			Square.new(
-				x: 365, y: 60 + incr,
+				x: 415, y: 35 + incr,
 				size: 15,
 				color: mark4,
 				z: 10
 				)
 	end
 
-	def make_board(board_array, guesses, incr, marks)
+	def make_board(board_array, guesses, incr, marks, rand_cols = [])
 		
 		font = 'fonts/Roboto-VariableFont_wdth,wght.ttf'
 		case
@@ -301,8 +331,8 @@ class Board
 			board_array.push(make_boardline(guesses, incr))
 		when incr < 720 && $is_end == true
 			Text.new(
-				'You won, yay :D!',
-				x: 100, y: 750,
+				'You won, yay :D! Want to play again? (Y/N)',
+				x: 100, y: 820,
 				font: font,
 				style: 'bold',
 				size: 18,
@@ -310,11 +340,12 @@ class Board
 				z: 10
 			)
 			$is_end = true
+			get_chosen_colors(rand_cols)
 
 		when incr >= 720 && $is_end == false
 			Text.new(
-				"You lost, sorry :(",
-				x: 100, y: 750,
+				"You lost, sorry :(... Want to play again? (Y/N)",
+				x: 100, y: 820,
 				font: font,
 				style: 'bold',
 				size: 18,
@@ -322,6 +353,7 @@ class Board
 				z: 10
 			)
 			$is_end = true
+			get_chosen_colors(rand_cols)
 		end	
 	end
 end

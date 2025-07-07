@@ -1,9 +1,9 @@
 require_relative "player"
 
 class Computer < Player
-
+attr_accessor :role
   def initialize(role)
-      super(role)
+      @role = role
   end
 
   def randomize_colors(human)
