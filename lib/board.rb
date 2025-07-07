@@ -323,37 +323,71 @@ class Board
 				)
 	end
 
-	def make_board(board_array, guesses, incr, marks, rand_cols = [])
-		
+	def make_board(board_array, guesses, incr, marks, rand_cols = [], user_chosen_colors, human)
 		font = 'fonts/Roboto-VariableFont_wdth,wght.ttf'
-		case
-		when incr < 720 && $is_end == false
-			board_array.push(make_boardline(guesses, incr))
-		when incr < 720 && $is_end == true
-			Text.new(
-				'You won, yay :D! Want to play again? (Y/N)',
-				x: 100, y: 820,
-				font: font,
-				style: 'bold',
-				size: 18,
-				color: 'aqua',
-				z: 10
-			)
-			$is_end = true
-			get_chosen_colors(rand_cols)
+		p "firing"
+		p human.role
+		if human.role == "guesser"
+			case
+			when incr < 720 && $is_end == false
+				board_array.push(make_boardline(guesses, incr))
+			when incr < 720 && $is_end == true
+				Text.new(
+					'You won, yay :D! Want to play again? (Y/N)',
+					x: 100, y: 820,
+					font: font,
+					style: 'bold',
+					size: 18,
+					color: 'aqua',
+					z: 10
+				)
+				$is_end = true
+				get_chosen_colors(rand_cols)
 
-		when incr >= 720 && $is_end == false
-			Text.new(
-				"You lost, sorry :(... Want to play again? (Y/N)",
-				x: 100, y: 820,
-				font: font,
-				style: 'bold',
-				size: 18,
-				color: 'aqua',
-				z: 10
-			)
-			$is_end = true
-			get_chosen_colors(rand_cols)
-		end	
+			when incr >= 720 && $is_end == false
+				Text.new(
+					"You lost, sorry :(... Want to play again? (Y/N)",
+					x: 100, y: 820,
+					font: font,
+					style: 'bold',
+					size: 18,
+					color: 'aqua',
+					z: 10
+				)
+				$is_end = true
+				get_chosen_colors(rand_cols)
+			end	
+		elsif human.role == "randomizer"
+			p "firing"	
+			board_array.push(choose_colors($user_chosen_colors))
+
+			case
+			when incr < 720 && $is_end == false
+				board_array.push(make_boardline(guesses, incr))
+			when incr < 720 && $is_end == true
+				Text.new(
+					'You won, yay :D! Want to play again? (Y/N)',
+					x: 100, y: 820,
+					font: font,
+					style: 'bold',
+					size: 18,
+					color: 'aqua',
+					z: 10
+				)
+				$is_end = true
+
+			when incr >= 720 && $is_end == false
+				Text.new(
+					"You lost, sorry :(... Want to play again? (Y/N)",
+					x: 100, y: 820,
+					font: font,
+					style: 'bold',
+					size: 18,
+					color: 'aqua',
+					z: 10
+				)
+				$is_end = true
+			end	
+		end
 	end
 end
