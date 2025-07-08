@@ -74,7 +74,7 @@ class Board
 			z: 10
 			)
 	end
-	
+
   def make_boardline(guesses = [], human)		
 		if human.role == "guesser"
 			col1 = guesses[0]
@@ -340,7 +340,6 @@ class Board
 			case
 			when $incr < 720 && $is_end == false
 				board_array.push(make_boardline(guesses, human))
-				sleep 5
 			when $incr < 720 && $is_end == true
 				Text.new(
 					'You won, yay :D! Want to play again? (Y/N)',
