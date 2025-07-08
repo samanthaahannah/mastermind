@@ -57,8 +57,4 @@ class Human < Player
       board.get_marks(marks)
     end
   end
-
-  def pick_colours()
-    
-  end
 end

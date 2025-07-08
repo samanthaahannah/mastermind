@@ -1,5 +1,4 @@
 require "ruby2d"
-require "colorize"     
 
 require_relative "lib/computer"
 require_relative "lib/human"
