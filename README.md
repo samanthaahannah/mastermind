@@ -21,7 +21,16 @@ For those using Linux, make sure you also install the extra packages quoted on t
 
 After you've installed Ruby, and the extra packages if you're using Linux, make sure you're in the root directory and install the gems with `bundle install`. This should install the Ruby2D and Colorize gems.
 
-### Run
+### Running
 
 Now, if you're in the root directory; you should be able to play the game by typing `ruby main.rb`
+
+### Rules
+To play the game, you can either play as the guesser, where the computer will choose a set of colours; or you can choose to let the computer guess the colours you choose.
+
+The rules are: you get to choose four colours from a let of six possible colors (These colours are mapped from 1 - 6 on your keyboard). After you hit return, a set of coloured markers on the right will tell you which tiles are correct, and those that have colours in the wrong position (A bit like Wordle).
+
+You then just keep going until either you get the right colour combo, or you run out of space.
+
+To quit, just hit escape anytime
 
