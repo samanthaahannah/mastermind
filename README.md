@@ -19,7 +19,7 @@ For those using Linux, make sure you also install the extra packages quoted on t
 
 ### Ruby2D
 
-After you've installed Ruby, and the extra packages if you're using Linux, make sure you're in the root directory and install the gems with `bundle install`. This should install the Ruby2D and Colorize gems.
+After you've installed Ruby, and the extra packages if you're using Linux, make sure you're in the root directory and install with `bundle install`. This should install the Ruby2D gem
 
 ### Running
 
